@@ -126,12 +126,12 @@ USE_TZ = True
 
 # STATIC_URL = 'static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 if 'VERCEL' in os.environ:
-    # Aponta para a nossa nova classe de armazenamento customizada
+    # Configuração para produção (Vercel)
     STATICFILES_STORAGE = 'core.storages.VercelBlobStorage'
-    
-    # A URL base dos arquivos estáticos é a URL do nosso Blob Store.
-    # A Vercel fornece esta URL na variável de ambiente BLOB_URL.
     BLOB_URL = os.getenv('BLOB_URL', '')
     STATIC_URL = f"{BLOB_URL.rstrip('/')}/"
 else:
