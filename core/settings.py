@@ -41,13 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'whitenoise.runserver_nostatic',
+    'storages',
     'clients'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',    
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -127,12 +126,17 @@ USE_TZ = True
 
 # STATIC_URL = 'static/'
 
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = 'static/'
-# Diretório onde o collectstatic irá juntar todos os arquivos estáticos
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-# Estratégia de armazenamento para o Whitenoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+if 'VERCEL' in os.environ:
+    # Aponta para a nossa nova classe de armazenamento customizada
+    STATICFILES_STORAGE = 'core.storages.VercelBlobStorage'
+    
+    # A URL base será construída dinamicamente pela nossa classe de storage
+    STATIC_URL = 'https://crm-d-blob.public.blob.vercel-storage.com/'
+
+else:
+    # Configuração para desenvolvimento local
+    STATIC_URL = 'static/'
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
