@@ -1,15 +1,18 @@
 {
   "builds": [
     {
-      "src": "python manage.py collectstatic --no-input",
-      "use": "@vercel/python"
-    },
-    {
       "src": "core/wsgi.py",
-      "use": "@vercel/python"
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb"
+      }
     }
   ],
   "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
     {
       "src": "/(.*)",
       "dest": "core/wsgi.py"
