@@ -2,13 +2,21 @@
   "builds": [
     {
       "src": "core/wsgi.py",
-      "use": "@vercel/python",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "build_files.sh",
+      "use": "@vercel/static-build",
       "config": {
-        "buildCommand": "python3 manage.py collectstatic --no-input --clear"
+        "distDir": "staticfiles"
       }
     }
   ],
   "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
     {
       "src": "/(.*)",
       "dest": "core/wsgi.py"

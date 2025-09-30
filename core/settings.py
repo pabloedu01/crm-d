@@ -53,7 +53,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'core.urls'
 
@@ -126,19 +128,8 @@ USE_TZ = True
 
 # STATIC_URL = 'static/'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
-if 'VERCEL' in os.environ:
-    # Configuração para produção (Vercel)
-    STATICFILES_STORAGE = 'core.storages.VercelBlobStorage'
-    STATIC_ROOT = BASE_DIR / 'staticfiles'  # <-- ADICIONE ESTA LINHA
-    BLOB_URL = os.getenv('BLOB_URL', '')
-    STATIC_URL = f"{BLOB_URL.rstrip('/')}/"
-else:
-    # Configuração para desenvolvimento local
-    STATIC_URL = 'static/'
-    STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/' 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
