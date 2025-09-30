@@ -132,6 +132,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 if 'VERCEL' in os.environ:
     # Configuração para produção (Vercel)
     STATICFILES_STORAGE = 'core.storages.VercelBlobStorage'
+    STATIC_ROOT = BASE_DIR / 'staticfiles'  # <-- ADICIONE ESTA LINHA
     BLOB_URL = os.getenv('BLOB_URL', '')
     STATIC_URL = f"{BLOB_URL.rstrip('/')}/"
 else:
