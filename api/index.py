@@ -29,7 +29,7 @@ app.config['SECRET_KEY'] = 'sua-chave-secreta-muito-forte-aqui'
 # Configuração do seu domínio
 RP_ID = "localhost"  # Mude para seu domínio em produção
 RP_NAME = "Minha Aplicação"
-ORIGIN = "http://localhost:5000"  # Mude para https://seudominio.com em produção
+ORIGIN = "https://crm-d-sigma.vercel.app"  # Mude para https://seudominio.com em produção
 
 # Conexão MongoDB
 client = pymongo.MongoClient('mongodb+srv://opabloedu_db_user:IQuB0oSfjSsyrr23@tutudo.ujpkfrp.mongodb.net/?retryWrites=true&w=majority&appName=Tutudo')
