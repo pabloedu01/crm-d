@@ -27,7 +27,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'sua-chave-secreta-muito-forte-aqui'
 
 # Configuração do seu domínio
-RP_ID = "localhost"  # Mude para seu domínio em produção
+RP_ID = "crm-d-sigma.vercel.app"  # Mude para seu domínio em produção
 RP_NAME = "Minha Aplicação"
 ORIGIN = "https://crm-d-sigma.vercel.app"  # Mude para https://seudominio.com em produção
 
