@@ -6,3 +6,8 @@ python-dotenv==1.1.1
 vercel_blob==0.4.2
 gunicorn==23.0.0
 pymongo==4.15.2
+pyotp==2.9.0
+qrcode==8.2
+bcrypt==5.0.0
+pillow==11.3.0
+webauthn==2.7.0
