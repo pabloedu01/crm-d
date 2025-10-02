@@ -1,7 +1,7 @@
-Django==5.2.6
+Flask==3.0.3
+Flask-SQLAlchemy==3.1.1
+Flask-Migrate==4.1.0
 psycopg2-binary==2.9.10
 python-dotenv==1.1.1
-whitenoise==6.11.0
-gunicorn==23.0.0
-django-storages==1.14.6
 vercel_blob==0.4.2
+gunicorn==23.0.0
