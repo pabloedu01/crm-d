@@ -1,6 +1,7 @@
-from flask import Flask
+from flask import Flask, Blueprint
 from dotenv import load_dotenv
 from api.connetion import create_mongo_client
+
 load_dotenv()
 
 app = Flask(__name__, static_url_path='')
